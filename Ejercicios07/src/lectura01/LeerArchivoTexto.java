@@ -13,6 +13,7 @@ public class LeerArchivoTexto {
     
     // lee registro del archivo
     public static void leerRegistros01() {
+        
 
         // 1. Se abre el archivo
         try // lee registros del archivo, usando el objeto Scanner
@@ -104,10 +105,13 @@ public class LeerArchivoTexto {
                 String linea = entrada.nextLine();
                 List<String> lista = Arrays.asList(linea.split(";"));
                 ArrayList<String> linea_partes = new ArrayList<>(lista);
-                for (int i = 0; i < linea_partes.size(); i++) {
-                    System.out.println(linea_partes.get(i));
-                }
+                 
+                System.out.printf("Nombre de Materia: %s\nPromedio de Notas: %s\n"
+                        + "Nombre de Docente: S\nTipo de contrato: %s\n", 
+                        linea_partes.get(0), linea_partes.get(1), linea_partes.get(2),
+                        linea_partes.get(3));
                 System.out.println("-----------------------------------");
+                
 
             } // fin de while
             entrada.close();
@@ -118,17 +122,27 @@ public class LeerArchivoTexto {
         } // fin de catch
     } // fin del m�todo leerRegistros
     // cierra el archivo y termina la aplicaci�n
-
     
-} // fin de la clase LeerArchivoTexto
+    public static void leerRegistros05 () {
+        try // lee registros del archivo, usando el objeto Scanner
+        {
+            Scanner entrada = new Scanner(new File("data/datosTres.txt"));
 
-/**************************************************************************
- * (C) Copyright 1992-2007 por Deitel & Associates, Inc. y                *
- * Pearson Education, Inc. Todos los derechos reservados.                 *
- 
- *************************************************************************/
-/*
-The java.lang.System.exit() method exits current program by terminating 
-running Java virtual machine.
-https://www.geeksforgeeks.org/system-exit-in-java/
-*/
+            while (entrada.hasNext()) {
+                String linea = entrada.nextLine();
+                List<String> lista = Arrays.asList(linea.split(";"));
+                ArrayList<String> linea_partes = new ArrayList<>(lista);
+                System.out.printf("%s\n", linea_partes.get(2));
+                System.out.println("-----------------------------------");
+
+            } // fin de while
+            entrada.close();
+        } // fin de try
+        catch (Exception e) {
+            System.err.println("Error al leer del archivo.");
+            System.exit(1); 
+        }
+        
+    }
+  
+} 

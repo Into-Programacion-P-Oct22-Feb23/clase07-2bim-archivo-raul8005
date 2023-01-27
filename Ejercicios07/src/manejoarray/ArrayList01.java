@@ -7,6 +7,7 @@ package manejoarray;
 
 // import java.util.ArrayList;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -48,13 +49,32 @@ public class ArrayList01 {
 
         System.out.println("----------------------------------");
         ArrayList<String> arreglo2 = new ArrayList<>();
+        Scanner entrada = new Scanner(System.in);
+        boolean bandera = true;
+        while (bandera) {
+            System.out.println("Ingrese nombre de paises:   ");
+            String paises = entrada.nextLine();
 
+            arreglo2.add(paises);
+            
+            
+            System.out.println("Ingrese el numero 2 para salir");
+            int opcion2 = entrada.nextInt();
+            
+            entrada.nextLine();
+            
+            if (opcion2 == 2) {
+                bandera = false;
+            }
+           
+
+        }
+        System.out.println("\nPresentar los valores en pantalla:");
         
-        
-        /*
-        ArrayList <String> arreglo2 = new ArrayList<>();
-        
-        ArrayList <Boolean> arreglo4 = new ArrayList<>();
-         */
+        for (int i = 0; i < arreglo2.size(); i++) {
+            System.out.println(arreglo2.get(i));
+
+        }
+
     }
 }
